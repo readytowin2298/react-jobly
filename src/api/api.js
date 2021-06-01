@@ -1,4 +1,5 @@
 import axios from "axios";
+import React, {useContext} from 'react';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -43,7 +44,14 @@ class JoblyApi {
     return res.company;
   }
 
-  // obviously, you'll add a lot here ...
+  static async login(username, passworrd){
+    let res = await this.request('auth/token', {username, password}, 'post')
+    if(res.err){
+      return undefined
+    };
+    let userData = await this.request('/users/${username)', config = {headers : `Bearer ${res.data.token}`})
+    
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)
