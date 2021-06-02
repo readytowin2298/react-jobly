@@ -49,7 +49,7 @@ class JoblyApi {
     if(res.err){
       return undefined
     };
-    let userData = await this.request('/users/${username)', config = {headers : `Bearer ${res.data.token}`})
+    return res.token;
     
   }
 }

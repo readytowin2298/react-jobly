@@ -6,9 +6,13 @@ import UserContext from './auth/UserContext';
 import Home from './Home';
 import LoginForm from './auth/LoginForm';
 import JoblyApi from './auth/LoginForm';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
+  const TOKEN_KEY = 'jobly-token';
   const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useLocalStorage(TOKEN_KEY);
+
 
   return (
     <div className="App">
