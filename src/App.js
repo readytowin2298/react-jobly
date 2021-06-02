@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import UserContext from './auth/UserContext';
 import Home from './Home';
 import LoginForm from './auth/LoginForm';
-import JoblyApi from './auth/LoginForm';
+import JoblyApi from './api/api';
 import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
@@ -13,6 +13,16 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_KEY);
 
+  const login = async (username, password) => {
+    try {
+      let token = await JoblyApi.login(username, password);
+      setToken(token);
+      return { success: true };
+    } catch (errors) {
+      console.error("login failed", errors);
+      return { success: false, errors };
+    }
+  }
 
   return (
     <div className="App">
@@ -22,7 +32,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/login">
-          <LoginForm login={JoblyApi.login} />
+          <LoginForm login={login} />
         </Route>
       </UserContext.Provider>
     </div>

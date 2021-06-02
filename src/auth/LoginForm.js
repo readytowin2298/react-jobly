@@ -18,7 +18,7 @@ function LoginForm({ login }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await login(formData);
+    let result = await login(formData.username, formData.password);
     if (result.success) {
       history.push("/companies");
     } else {
