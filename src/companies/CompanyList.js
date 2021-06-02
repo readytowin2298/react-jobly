@@ -4,6 +4,7 @@ import JoblyApi from "../api/api";
 import CompanyCard from "./CompanyCard";
 import LoadingSpinner from "../common/LoadingSpinner";
 
+// Show list of companies
 
 function CompanyList() {
   console.debug("CompanyList");

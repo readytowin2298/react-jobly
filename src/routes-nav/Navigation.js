@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import UserContext from "./auth/UserContext.js";
-import "./NavBar.css";
+import UserContext from "../auth/UserContext";
+import "./Navigation.css";
 
 
-function NavBar() {
+function Navigation({ logout }) {
   const { currentUser } = useContext(UserContext);
   console.debug("Navigation", "currentUser=", currentUser);
 
@@ -27,7 +27,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/" onClick={() => console.log('hi')}>
+            <Link className="nav-link" to="/" onClick={logout}>
               Log out {currentUser.first_name || currentUser.username}
             </Link>
           </li>
@@ -62,4 +62,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navigation;

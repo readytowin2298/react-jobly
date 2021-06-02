@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./CompanyCard.css";
 
+/** Show  information about a company */
 
 function CompanyCard({ name, description, logoUrl, handle }) {
   console.debug("CompanyCard", logoUrl);
