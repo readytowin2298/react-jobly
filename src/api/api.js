@@ -44,13 +44,19 @@ class JoblyApi {
     return res.company;
   }
 
+  // Login
   static async login(username, password){
     let res = await this.request('auth/token', {username, password}, 'post')
     if(res.err){
       return undefined
     };
     return res.token;
-    
+  }
+
+  // Fetch Current User data
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
   }
 }
 
