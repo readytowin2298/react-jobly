@@ -6,6 +6,7 @@ import UserContext from './auth/UserContext';
 import Home from './Home';
 import LoginForm from './auth/LoginForm';
 import JoblyApi from './api/api';
+import CompanyList from './companies/CompanyList';
 import useLocalStorage from './hooks/useLocalStorage';
 import jwt from "jsonwebtoken";
 
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <LoginForm login={login} />
+        </Route>
+        <Route exact path="/companies">
+          <CompanyList />
         </Route>
       </UserContext.Provider>
     </div>

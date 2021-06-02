@@ -44,6 +44,15 @@ class JoblyApi {
     return res.company;
   }
 
+  // Get all companies
+  static async getCompanies(){
+    let res = await this.request(`companies`)
+    if(res.err){
+      return undefined
+    }
+    return res.data
+  }
+
   // Login
   static async login(username, password){
     let res = await this.request('auth/token', {username, password}, 'post')
